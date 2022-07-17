@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Types
-  class UserType < Types::BaseObject
+  class UserType < Types::AuthQuery
     field :id, ID, null: false
     field :provider, String, null: false
     field :uid, String, null: false
