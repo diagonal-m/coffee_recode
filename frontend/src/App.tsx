@@ -7,6 +7,10 @@ import About from "components/pages/About"
 import SignUp from "components/pages/SignUp"
 import SignIn from "components/pages/SignIn"
 
+import Cookies from "js-cookie"
+import {ApolloProvider, ApolloClient, InMemoryCache, createHttpLink} from "@apollo/client"
+import { setContext } from '@apollo/client/link/context';
+
 import { getCurrentUser } from "lib/api/auth"
 import { User } from "interfaces/index"
 
@@ -50,6 +54,34 @@ const App: React.FC = () => {
     handleGetCurrentUser()
   }, [setCurrentUser])
 
+  const httpLink = createHttpLink({
+    uri: 'http://localhost:3333/graphql',
+    headers: {
+      "access-token": Cookies.get("_access_token"),
+      "client": Cookies.get("_client"),
+      "uid": Cookies.get("_uid")
+    }
+  })
+
+  const authLink = setContext((_, { headers }) => {
+    const token = Cookies.get("_access_token")
+    const client = Cookies.get("_client")
+    const uid = Cookies.get("_uid")
+    return {
+      headers: {
+        ...headers,
+        accessToken: token,
+        client: client,
+        uid: uid
+      }
+    }
+  })
+
+  const client = new ApolloClient({
+    // link: httpLink,
+    cache: new InMemoryCache(),
+    link: authLink.concat(httpLink)
+  })
 
   // ユーザーが認証済みかどうかでルーティングを決定
   // 未認証だった場合は「/signin」ページに促す
@@ -68,16 +100,18 @@ const App: React.FC = () => {
   return (
     <Router>
       <AuthContext.Provider value={{ loading, setLoading, isSignedIn, setIsSignedIn, currentUser, setCurrentUser}}>
-        <CommonLayout>
-          <Switch>
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/signin" component={SignIn} />
-            <Private>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/about" component={About} />
-            </Private>
-          </Switch>
-        </CommonLayout>
+        <ApolloProvider client={client}>
+          <CommonLayout>
+            <Switch>
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signin" component={SignIn} />
+              <Private>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/about" component={About} />
+              </Private>
+            </Switch>
+          </CommonLayout>
+        </ApolloProvider>
       </AuthContext.Provider>
     </Router>
   )
