@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import CommonLayout from "components/layouts/CommonLayout"
 import Home from "components/pages/Home"
+import About from "components/pages/About"
 import SignUp from "components/pages/SignUp"
 import SignIn from "components/pages/SignIn"
 
@@ -52,7 +53,7 @@ const App: React.FC = () => {
 
   // ユーザーが認証済みかどうかでルーティングを決定
   // 未認証だった場合は「/signin」ページに促す
-  const Private = ({ children }: { children: React.ReactElement }) => {
+  const Private = ({ children }: { children:any }) => {
     if (!loading) {
       if (isSignedIn) {
         return children
@@ -73,6 +74,7 @@ const App: React.FC = () => {
             <Route exact path="/signin" component={SignIn} />
             <Private>
               <Route exact path="/" component={Home} />
+              <Route exact path="/about" component={About} />
             </Private>
           </Switch>
         </CommonLayout>
