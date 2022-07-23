@@ -16,7 +16,12 @@ module Types
 
     field :current_user, Types::UserType, null: true
     def current_user
-      context[:current_user]
+      @current_user ||= context[:current_user]
+    end
+
+    field :my_beans, [Types::CoffeeBeanType], null: true
+    def my_beans
+      current_user&.coffee_beans
     end
   end
 end
