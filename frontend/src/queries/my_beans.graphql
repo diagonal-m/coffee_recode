@@ -4,6 +4,7 @@ query myBeans {
     name
     processing
     tasting
+    evaluation
     store
   }
 }

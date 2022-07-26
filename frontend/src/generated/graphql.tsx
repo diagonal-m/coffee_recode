@@ -95,7 +95,7 @@ export type User = {
 export type MyBeansQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyBeansQuery = { __typename?: 'Query', myBeans?: Array<{ __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, tasting?: string | null, store?: string | null }> | null };
+export type MyBeansQuery = { __typename?: 'Query', myBeans?: Array<{ __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, tasting?: string | null, evaluation?: number | null, store?: string | null }> | null };
 
 
 export const MyBeansDocument = gql`
@@ -105,6 +105,7 @@ export const MyBeansDocument = gql`
     name
     processing
     tasting
+    evaluation
     store
   }
 }
