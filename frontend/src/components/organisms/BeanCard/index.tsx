@@ -107,7 +107,7 @@ const CoffeeBeanCard: React.FC<CoffeeBeanCardType> = (props) => {
           <Rating value={evaluation} max={10} readOnly={true} style={{'fontSize': '15px'}}/>
         </CardContent>
         <PStyle>Tokyo Japan</PStyle>
-        <h6 style={{'fontFamily': 'times new roman', 'marginBottom': '10px', 'marginTop': '10px'}}>{store}</h6>
+        <p style={{'fontSize': '12px', 'fontFamily': 'times new roman', 'marginBottom': '10px', 'marginTop': '10px'}}>{store}</p>
       </Card>
     </>
   )
