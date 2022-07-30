@@ -21,7 +21,7 @@ module Types
 
     field :my_beans, [Types::CoffeeBeanType], null: false
     def my_beans
-      current_user&.coffee_beans
+      current_user&.coffee_beans&.order(created_at: "DESC")
     end
   end
 end
