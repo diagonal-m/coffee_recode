@@ -92,12 +92,69 @@ export type User = {
   updatedAt: Scalars['ISO8601DateTime'];
 };
 
+export type CreateCoffeeBeanMutationVariables = Exact<{
+  name: Scalars['String'];
+  processing: Scalars['String'];
+  tasting: Scalars['String'];
+  evaluation: Scalars['Int'];
+  store: Scalars['String'];
+}>;
+
+
+export type CreateCoffeeBeanMutation = { __typename?: 'Mutation', createCoffeeBean?: { __typename?: 'CreateCoffeeBeanPayload', coffeeBean?: { __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, tasting?: string | null, evaluation?: number | null, store?: string | null } | null } | null };
+
 export type MyBeansQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type MyBeansQuery = { __typename?: 'Query', myBeans: Array<{ __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, tasting?: string | null, evaluation?: number | null, store?: string | null }> };
 
 
+export const CreateCoffeeBeanDocument = gql`
+    mutation createCoffeeBean($name: String!, $processing: String!, $tasting: String!, $evaluation: Int!, $store: String!) {
+  createCoffeeBean(
+    input: {name: $name, processing: $processing, tasting: $tasting, evaluation: $evaluation, store: $store}
+  ) {
+    coffeeBean {
+      id
+      name
+      processing
+      tasting
+      evaluation
+      store
+    }
+  }
+}
+    `;
+export type CreateCoffeeBeanMutationFn = Apollo.MutationFunction<CreateCoffeeBeanMutation, CreateCoffeeBeanMutationVariables>;
+
+/**
+ * __useCreateCoffeeBeanMutation__
+ *
+ * To run a mutation, you first call `useCreateCoffeeBeanMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateCoffeeBeanMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createCoffeeBeanMutation, { data, loading, error }] = useCreateCoffeeBeanMutation({
+ *   variables: {
+ *      name: // value for 'name'
+ *      processing: // value for 'processing'
+ *      tasting: // value for 'tasting'
+ *      evaluation: // value for 'evaluation'
+ *      store: // value for 'store'
+ *   },
+ * });
+ */
+export function useCreateCoffeeBeanMutation(baseOptions?: Apollo.MutationHookOptions<CreateCoffeeBeanMutation, CreateCoffeeBeanMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<CreateCoffeeBeanMutation, CreateCoffeeBeanMutationVariables>(CreateCoffeeBeanDocument, options);
+      }
+export type CreateCoffeeBeanMutationHookResult = ReturnType<typeof useCreateCoffeeBeanMutation>;
+export type CreateCoffeeBeanMutationResult = Apollo.MutationResult<CreateCoffeeBeanMutation>;
+export type CreateCoffeeBeanMutationOptions = Apollo.BaseMutationOptions<CreateCoffeeBeanMutation, CreateCoffeeBeanMutationVariables>;
 export const MyBeansDocument = gql`
     query myBeans {
   myBeans {
