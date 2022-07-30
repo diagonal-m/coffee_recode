@@ -34,10 +34,7 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
       }
     })
     const coffeeBean = result.data?.createCoffeeBean?.coffeeBean
-    console.log(coffeeBean)
-    console.log([coffeeBean, ...props.beans])
     props.setBeans([coffeeBean, ...props.beans])
-    // console.log(props.beans)
   }
 
   return (
@@ -108,8 +105,6 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
               disabled={!name || !processing}
               style={{padding: '5px', textTransform: 'none'}}
               onClick={() => {
-                console.log(name)
-                console.log(processing)
                 submitAdd()
                 props.setIsModal(false)
               }}
