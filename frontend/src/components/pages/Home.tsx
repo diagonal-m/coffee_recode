@@ -1,25 +1,40 @@
-import React, { useContext } from "react"
+import React from "react"
 
-import { AuthContext } from "App"
+import { useMyBeansLazyQuery } from "generated/graphql"
+import CoffeeBeanCard from "components/organisms/BeanCard"
+import Grid from "@material-ui/core/Grid"
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 // とりあえず認証済みユーザーの名前やメールアドレスを表示
 const Home: React.FC = () => {
-  const { isSignedIn, currentUser } = useContext(AuthContext)
-  
+  const [beans, setBeans] = React.useState<any>([])
+  const [getMyBeans, {loading, data}] = useMyBeansLazyQuery()
+
+  React.useEffect((): any => {
+    getMyBeans()
+  }, [beans]);
+
+  if (!data || loading) {
+    return (<CircularProgress />)
+  }
+
+  const myBeans = data.myBeans
+
   return (
-    <>
-      {
-        isSignedIn && currentUser ? (
-          <>
-            <h1>Signed in successfully!</h1>
-            <h2>Email: {currentUser?.email}</h2>
-            <h2>Name: {currentUser?.name}</h2>
-          </>
-        ) : (
-          <h1>Not signed in</h1>
-        )
-      }
-    </>
+    <Grid container>
+      {myBeans?.map((bean: any) => (
+        <Grid item>
+        <CoffeeBeanCard
+          id={bean.id}
+          name={bean.name}
+          processing={bean.processing || ''}
+          tasting={bean.tasting || ''}
+          evaluation={bean.evaluation || 0}
+          store={bean.store || ''}
+        />
+      </Grid>
+      ))}
+    </Grid>
   )
 }
 
