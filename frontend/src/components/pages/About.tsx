@@ -29,7 +29,7 @@ const About: React.FC = () => {
     console.log("getMyBeans")
     getMyBeans()
     setBeans(data?.myBeans)
-  }, [beans, data]);
+  }, [data]);
 
 
   if (loading) {
@@ -43,6 +43,8 @@ const About: React.FC = () => {
   if (!beans) {
     return (<AddCoffeeBeanCard onClick={addButtonClick}/>)
   }
+
+  console.log(beans)
 
   return (
     <>
@@ -65,7 +67,7 @@ const About: React.FC = () => {
         open={isModal}
         onClose={closeModal}
       >
-        <AddBeanForm setIsModal={setIsModal} />
+        <AddBeanForm setIsModal={setIsModal} beans={beans} setBeans={setBeans}/>
       </Modal>
     </>
   )

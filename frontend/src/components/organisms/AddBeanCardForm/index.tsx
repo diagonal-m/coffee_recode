@@ -5,8 +5,12 @@ import CardContent from "@material-ui/core/CardContent"
 import CardHeader from "@material-ui/core/CardHeader"
 import Button from "@material-ui/core/Button"
 
+import { useCreateCoffeeBeanMutation } from "generated/graphql" 
+
 type PropsType = {
   setIsModal:  React.Dispatch<React.SetStateAction<boolean>>
+  beans: any
+  setBeans: React.Dispatch<any>
 }
 
 // サインアップ用ページ
@@ -17,6 +21,24 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
   const [tasting, setTasting] = useState<string>("")
   const [rating, setRating] = useState<string>("")
   const [storeName, setStoreName] = useState<string>("")
+
+  const [createCoffeeBean] = useCreateCoffeeBeanMutation()
+  const submitAdd = async () => {
+    const result = await createCoffeeBean({
+      variables: {
+        name: name,
+        processing: processing,
+        tasting: tasting,
+        evaluation: Number(rating),
+        store: storeName
+      }
+    })
+    const coffeeBean = result.data?.createCoffeeBean?.coffeeBean
+    console.log(coffeeBean)
+    console.log([coffeeBean, ...props.beans])
+    props.setBeans([coffeeBean, ...props.beans])
+    // console.log(props.beans)
+  }
 
   return (
     <div style={{'marginTop': '25vh','display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
@@ -88,6 +110,7 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
               onClick={() => {
                 console.log(name)
                 console.log(processing)
+                submitAdd()
                 props.setIsModal(false)
               }}
             >
