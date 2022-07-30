@@ -64,7 +64,7 @@ export type MutationCreateCoffeeBeanArgs = {
 export type Query = {
   __typename?: 'Query';
   currentUser?: Maybe<User>;
-  myBeans?: Maybe<Array<CoffeeBean>>;
+  myBeans: Array<CoffeeBean>;
   /** An example field added by the generator */
   testField: Scalars['String'];
 };
@@ -95,7 +95,7 @@ export type User = {
 export type MyBeansQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type MyBeansQuery = { __typename?: 'Query', myBeans?: Array<{ __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, tasting?: string | null, evaluation?: number | null, store?: string | null }> | null };
+export type MyBeansQuery = { __typename?: 'Query', myBeans: Array<{ __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, tasting?: string | null, evaluation?: number | null, store?: string | null }> };
 
 
 export const MyBeansDocument = gql`

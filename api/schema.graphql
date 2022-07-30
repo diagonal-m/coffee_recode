@@ -57,7 +57,7 @@ type Mutation {
 
 type Query {
   currentUser: User
-  myBeans: [CoffeeBean!]
+  myBeans: [CoffeeBean!]!
 
   """
   An example field added by the generator
