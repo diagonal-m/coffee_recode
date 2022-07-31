@@ -17,10 +17,14 @@ type PropsType = {
 const AddBeanForm: React.FC<PropsType> = (props) => {
   const [name, setName] = useState<string>("")
   const [processing, setProcessing] = useState<string>("")
+  const [country, setCountry] = useState<string>("")
+  const [varietal, setVarietal] = useState<string>("")
   const [roastLevel, setRoastLevel] = useState<string>("")
   const [tasting, setTasting] = useState<string>("")
   const [rating, setRating] = useState<string>("")
+
   const [storeName, setStoreName] = useState<string>("")
+  const [station, setStation] = useState<string>("")
 
   const [createCoffeeBean] = useCreateCoffeeBeanMutation()
   const submitAdd = async () => {
@@ -28,9 +32,13 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
       variables: {
         name: name,
         processing: processing,
+        country: country,
+        varietal: varietal,
+        roast_level: Number(roastLevel),
         tasting: tasting,
         evaluation: Number(rating),
-        store: storeName
+        store: storeName,
+        station: station
       }
     })
     const coffeeBean = result.data?.createCoffeeBean?.coffeeBean
@@ -38,7 +46,7 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
   }
 
   return (
-    <div style={{'marginTop': '25vh','display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
+    <div style={{'marginTop': '10vh','display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
         <Card style={{padding: '20px', maxWidth: '500px'}}>
           <CardHeader title="CoffeeBeans" style={{textAlign: "center"}}/>
           <CardContent>
@@ -59,6 +67,24 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
               value={processing}
               margin="dense"
               onChange={event => setProcessing(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              label="Country"
+              value={country}
+              margin="dense"
+              onChange={event => setCountry(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              label="Varietal"
+              value={varietal}
+              margin="dense"
+              onChange={event => setVarietal(event.target.value)}
             />
             <TextField
               variant="outlined"
@@ -95,6 +121,15 @@ const AddBeanForm: React.FC<PropsType> = (props) => {
               value={storeName}
               margin="dense"
               onChange={event => setStoreName(event.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              required
+              fullWidth
+              label="Station"
+              value={station}
+              margin="dense"
+              onChange={event => setStation(event.target.value)}
             />
             <Button
               type="submit"
