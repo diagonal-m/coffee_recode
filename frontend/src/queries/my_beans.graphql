@@ -3,8 +3,14 @@ query myBeans {
     id
     name
     processing
+    country
+    varietal
+    roastLevel
     tasting
     evaluation
-    store
+    store {
+      name
+      station
+    }
   }
 }
