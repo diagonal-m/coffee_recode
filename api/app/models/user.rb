@@ -39,4 +39,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :coffee_beans, dependent: :destroy
+  has_many :cafes, dependent: :destroy
 end
