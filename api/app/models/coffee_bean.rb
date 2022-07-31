@@ -29,4 +29,6 @@
 class CoffeeBean < ApplicationRecord
   belongs_to :user
   belongs_to :store
+
+  enum roast_level: { LIGHTLY: 0,  MEDIUM: 1, DARK: 2 }
 end
