@@ -1,13 +1,17 @@
 type CoffeeBean {
+  country: String
   createdAt: ISO8601DateTime!
   evaluation: Int
   id: ID!
   name: String!
   processing: String
-  store: String
+  roastLevel: Int
+  store: Store
+  storeId: Int
   tasting: String
   updatedAt: ISO8601DateTime!
   userId: Int!
+  varietal: String
 }
 
 """
@@ -18,11 +22,15 @@ input CreateCoffeeBeanInput {
   A unique identifier for the client performing the mutation.
   """
   clientMutationId: String
+  country: String
   evaluation: Int
   name: String!
   processing: String
-  store: String
+  roastLevel: Int
+  station: String
+  store: String!
   tasting: String
+  varietal: String
 }
 
 """
@@ -63,6 +71,15 @@ type Query {
   An example field added by the generator
   """
   testField: String!
+}
+
+type Store {
+  createdAt: ISO8601DateTime!
+  id: ID!
+  name: String!
+  station: String!
+  updatedAt: ISO8601DateTime!
+  userId: Int!
 }
 
 type User {
