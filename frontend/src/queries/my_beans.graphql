@@ -1,0 +1,10 @@
+query myBeans {
+  myBeans {
+    id
+    name
+    processing
+    tasting
+    evaluation
+    store
+  }
+}

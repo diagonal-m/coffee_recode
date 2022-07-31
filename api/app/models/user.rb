@@ -38,5 +38,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :coffee_beans
+  has_many :coffee_beans, dependent: :destroy
 end

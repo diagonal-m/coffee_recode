@@ -19,9 +19,9 @@ module Types
       @current_user ||= context[:current_user]
     end
 
-    field :my_beans, [Types::CoffeeBeanType], null: true
+    field :my_beans, [Types::CoffeeBeanType], null: false
     def my_beans
-      current_user&.coffee_beans
+      current_user&.coffee_beans&.order(created_at: "DESC")
     end
   end
 end

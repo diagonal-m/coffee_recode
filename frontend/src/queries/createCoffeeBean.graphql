@@ -1,0 +1,26 @@
+mutation createCoffeeBean(
+  $name: String!
+  $processing: String!
+  $tasting: String!
+  $evaluation: Int!
+  $store: String!
+) {
+  createCoffeeBean(
+    input: {
+      name: $name
+      processing: $processing
+      tasting: $tasting
+      evaluation: $evaluation
+      store: $store
+    }
+  ) {
+    coffeeBean {
+      id
+      name
+      processing
+      tasting
+      evaluation
+      store
+    }
+  }
+}
