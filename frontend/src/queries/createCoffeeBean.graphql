@@ -1,26 +1,40 @@
 mutation createCoffeeBean(
   $name: String!
   $processing: String!
+  $country: String!
+  $varietal: String!
+  $roast_level: Int!
   $tasting: String!
   $evaluation: Int!
   $store: String!
+  $station: String!
 ) {
   createCoffeeBean(
     input: {
       name: $name
       processing: $processing
+      country: $country
+      varietal: $varietal
+      roastLevel: $roast_level
       tasting: $tasting
       evaluation: $evaluation
       store: $store
+      station: $station
     }
   ) {
     coffeeBean {
       id
       name
       processing
+      country
+      varietal
+      roastLevel
       tasting
       evaluation
-      store
+      store {
+        name
+        station
+      }
     }
   }
 }

@@ -2,24 +2,33 @@
 #
 # Table name: coffee_beans
 #
-#  id         :integer          not null, primary key
-#  evaluation :integer
-#  name       :string           not null
-#  processing :string
-#  store      :string
-#  tasting    :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :integer          not null
+#  id          :integer          not null, primary key
+#  country     :string
+#  evaluation  :integer
+#  name        :string           not null
+#  processing  :string
+#  roast_level :integer
+#  store       :string
+#  tasting     :string
+#  varietal    :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#  store_id    :integer
+#  user_id     :integer          not null
 #
 # Indexes
 #
-#  index_coffee_beans_on_user_id  (user_id)
+#  index_coffee_beans_on_store_id  (store_id)
+#  index_coffee_beans_on_user_id   (user_id)
 #
 # Foreign Keys
 #
-#  user_id  (user_id => users.id)
+#  store_id  (store_id => stores.id)
+#  user_id   (user_id => users.id)
 #
 class CoffeeBean < ApplicationRecord
   belongs_to :user
+  belongs_to :store
+
+  enum roast_level: { LIGHTLY: 0,  MEDIUM: 1, DARK: 2 }
 end
