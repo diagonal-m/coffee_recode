@@ -20,4 +20,5 @@
 class Store < ApplicationRecord
   belongs_to :user
   has_many :coffee_beans
+  has_many :purchases
 end
