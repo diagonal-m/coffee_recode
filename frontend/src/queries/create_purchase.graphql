@@ -1,0 +1,34 @@
+mutation createPurchase(
+  $purchase_date: String!
+  $menu: String!
+  $coffee_type: Int!
+  $volume: String!
+  $price: Int!
+  $store: String!
+  $station: String!
+) {
+  createPurchase(
+    input: {
+      purchaseDate: $purchase_date
+      menu: $menu
+      coffeeType: $coffee_type
+      volume: $volume
+      price: $price
+      store: $store
+      station: $station
+    }
+  ) {
+    purchase {
+      id
+      purchaseDate
+      menu
+      coffeeType
+      volume
+      price
+      store {
+        name
+        station
+      }
+    }
+  }
+}

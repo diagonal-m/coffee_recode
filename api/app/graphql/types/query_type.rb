@@ -24,10 +24,10 @@ module Types
       current_user&.coffee_beans&.order(created_at: "DESC")
     end
 
-    field :monthry_purchases, [Types::PurchaseType], null: false do
+    field :monthly_purchases, [Types::PurchaseType], null: false do
       argument :month, String, required: true
     end
-    def monthry_purchases(month:)
+    def monthly_purchases(month:)
       current_user&.purchases.where(purchase_date: month.to_date.all_month)
     end
   end

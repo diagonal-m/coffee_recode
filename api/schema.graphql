@@ -113,7 +113,7 @@ type Purchase {
 
 type Query {
   currentUser: User
-  monthryPurchases(month: String!): [Purchase!]!
+  monthlyPurchases(month: String!): [Purchase!]!
   myBeans: [CoffeeBean!]!
 
   """
