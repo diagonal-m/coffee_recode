@@ -43,26 +43,24 @@ const Home: React.FC = () => {
     return (<AddCoffeeBeanCard onClick={addButtonClick}/>)
   }
 
-  console.log(beans[0].roastLevel)
-
   return (
     <>
-      <Grid container >
+      <Grid container style={{'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
         <AddCoffeeBeanCard onClick={addButtonClick}/>
         {beans?.map((bean: any) => (
-          <Grid item>
-          <CoffeeBeanCard
-            id={bean.id}
-            name={bean.name}
-            processing={bean.processing || ''}
-            country={bean.country || ''}
-            varietal={bean.varietal || ''}
-            roast_level={bean.roastLevel}
-            tasting={bean.tasting || ''}
-            evaluation={bean.evaluation || 0}
-            store={bean.store.name || ''}
-            station={bean.store.station || ''}
-          />
+          <Grid item >
+            <CoffeeBeanCard
+              id={bean.id}
+              name={bean.name}
+              processing={bean.processing || ''}
+              country={bean.country || ''}
+              varietal={bean.varietal || ''}
+              roast_level={bean.roastLevel}
+              tasting={bean.tasting || ''}
+              evaluation={bean.evaluation || 0}
+              store={bean.store.name || ''}
+              station={bean.store.station || ''}
+            />
         </Grid>
         ))}
       </Grid>

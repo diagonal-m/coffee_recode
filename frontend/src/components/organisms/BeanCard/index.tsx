@@ -84,7 +84,7 @@ const PStyle = styled.p`
 `
 
 const CoffeeBeanCard: React.FC<CoffeeBeanCardType> = (props) => {
-  const roastLevels: {[key: number]: string} = { 0: 'Lightly', 1: 'Medium', 2: 'Dark', 99: '' }
+  const roastLevels: {[key: number]: string} = { 0: 'LIGHTLY', 1: 'MEDIUM', 2: 'DARK', 99: '' }
   console.log(props.roast_level)
 
   const id = props.id
@@ -92,7 +92,7 @@ const CoffeeBeanCard: React.FC<CoffeeBeanCardType> = (props) => {
   const processing = props.processing.toUpperCase()
   const country = props.country.toUpperCase()
   const varietal = props.varietal.toUpperCase()
-  const roast_level = roastLevels[props.roast_level].toUpperCase()
+  const roast_level = roastLevels[props.roast_level]
   const tasting = props.tasting
   const evaluation = props.evaluation
   const store = props.store

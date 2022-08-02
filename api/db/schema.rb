@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_31_113110) do
+ActiveRecord::Schema.define(version: 2022_08_01_123151) do
 
   create_table "coffee_beans", force: :cascade do |t|
     t.string "name", null: false
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 2022_07_31_113110) do
     t.integer "store_id"
     t.index ["store_id"], name: "index_coffee_beans_on_store_id"
     t.index ["user_id"], name: "index_coffee_beans_on_user_id"
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.datetime "purchase_date"
+    t.string "menu"
+    t.integer "coffee_type"
+    t.string "volume"
+    t.integer "price"
+    t.integer "user_id", null: false
+    t.integer "store_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["store_id"], name: "index_purchases_on_store_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -65,5 +79,7 @@ ActiveRecord::Schema.define(version: 2022_07_31_113110) do
 
   add_foreign_key "coffee_beans", "stores"
   add_foreign_key "coffee_beans", "users"
+  add_foreign_key "purchases", "stores"
+  add_foreign_key "purchases", "users"
   add_foreign_key "stores", "users"
 end

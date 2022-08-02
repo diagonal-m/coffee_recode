@@ -40,4 +40,5 @@ class User < ActiveRecord::Base
 
   has_many :coffee_beans, dependent: :destroy
   has_many :stores, dependent: :destroy
+  has_many :purchases
 end
