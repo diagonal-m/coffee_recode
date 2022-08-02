@@ -26,4 +26,6 @@
 class Purchase < ApplicationRecord
   belongs_to :user
   belongs_to :store
+
+  enum coffee_type: { BEAN: 0, CAFE: 1 }
 end
