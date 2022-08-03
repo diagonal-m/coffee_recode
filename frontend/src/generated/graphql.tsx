@@ -191,7 +191,7 @@ export type MonthlyPurchasesQueryVariables = Exact<{
 }>;
 
 
-export type MonthlyPurchasesQuery = { __typename?: 'Query', monthlyPurchases: Array<{ __typename?: 'Purchase', id: string, purchaseDate?: any | null, menu?: string | null, volume?: string | null, price?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null }> };
+export type MonthlyPurchasesQuery = { __typename?: 'Query', monthlyPurchases: Array<{ __typename?: 'Purchase', id: string, purchaseDate?: any | null, menu?: string | null, coffeeType?: number | null, volume?: string | null, price?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null }> };
 
 export type MyBeansQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -313,6 +313,7 @@ export const MonthlyPurchasesDocument = gql`
     id
     purchaseDate
     menu
+    coffeeType
     volume
     price
     store {
