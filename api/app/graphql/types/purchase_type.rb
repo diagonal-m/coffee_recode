@@ -5,7 +5,7 @@ module Types
     field :id, ID, null: false
     field :purchase_date, GraphQL::Types::ISO8601DateTime
     field :menu, String
-    field :coffee_type, Integer
+    field :coffee_type, String
     field :volume, String
     field :price, Integer
     field :user_id, Integer, null: false

@@ -98,7 +98,7 @@ type Mutation {
 }
 
 type Purchase {
-  coffeeType: Int
+  coffeeType: String
   createdAt: ISO8601DateTime!
   id: ID!
   menu: String

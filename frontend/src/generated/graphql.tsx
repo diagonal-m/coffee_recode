@@ -98,7 +98,7 @@ export type MutationCreatePurchaseArgs = {
 
 export type Purchase = {
   __typename?: 'Purchase';
-  coffeeType?: Maybe<Scalars['Int']>;
+  coffeeType?: Maybe<Scalars['String']>;
   createdAt: Scalars['ISO8601DateTime'];
   id: Scalars['ID'];
   menu?: Maybe<Scalars['String']>;
@@ -184,14 +184,14 @@ export type CreatePurchaseMutationVariables = Exact<{
 }>;
 
 
-export type CreatePurchaseMutation = { __typename?: 'Mutation', createPurchase?: { __typename?: 'CreatePurchasePayload', purchase?: { __typename?: 'Purchase', id: string, purchaseDate?: any | null, menu?: string | null, coffeeType?: number | null, volume?: string | null, price?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null } | null } | null };
+export type CreatePurchaseMutation = { __typename?: 'Mutation', createPurchase?: { __typename?: 'CreatePurchasePayload', purchase?: { __typename?: 'Purchase', id: string, purchaseDate?: any | null, menu?: string | null, coffeeType?: string | null, volume?: string | null, price?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null } | null } | null };
 
 export type MonthlyPurchasesQueryVariables = Exact<{
   month: Scalars['String'];
 }>;
 
 
-export type MonthlyPurchasesQuery = { __typename?: 'Query', monthlyPurchases: Array<{ __typename?: 'Purchase', id: string, purchaseDate?: any | null, menu?: string | null, coffeeType?: number | null, volume?: string | null, price?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null }> };
+export type MonthlyPurchasesQuery = { __typename?: 'Query', monthlyPurchases: Array<{ __typename?: 'Purchase', id: string, purchaseDate?: any | null, menu?: string | null, coffeeType?: string | null, volume?: string | null, price?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null }> };
 
 export type MyBeansQueryVariables = Exact<{ [key: string]: never; }>;
 
