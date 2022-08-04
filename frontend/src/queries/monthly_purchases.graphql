@@ -3,6 +3,7 @@ query monthlyPurchases($month: String!) {
     id
     purchaseDate
     menu
+    coffeeType
     volume
     price
     store {

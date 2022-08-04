@@ -1,24 +1,39 @@
 import React from "react"
 
-import { useMyBeansLazyQuery } from "generated/graphql"
+import { useMonthlyPurchasesLazyQuery } from "generated/graphql"
 
-import Grid from "@material-ui/core/Grid"
 import CircularProgress from '@material-ui/core/CircularProgress'
-import Modal from "@material-ui/core/Modal"
 
-import CoffeeBeanCard from "components/organisms/BeanCard"
-import AddCoffeeBeanCard from "components/organisms/AddBeanCard"
-import AddBeanForm from "components/organisms/AddBeanCardForm"
+import PurchasesTable from "components/organisms/PurchasesTable";
 
 
 // とりあえず認証済みユーザーの名前やメールアドレスを表示
 const About: React.FC = () => {
+  const [purchases, setPurchases] = React.useState<any>([])
   
+  const [getMonthlyPurchases, {loading, data}] = useMonthlyPurchasesLazyQuery()
+
+  React.useEffect((): any => {
+    getMonthlyPurchases({
+      variables: {month: '2022-08-01'}
+    })
+    setPurchases(data?.monthlyPurchases)
+  }, [data])
+
+  if (loading) {
+    return (<CircularProgress />)
+  }
+
+  if (!data) {
+    return (<CircularProgress />)
+  }
+
+  if (!purchases) {
+    <></>
+  }
 
   return (
-    <>
-      
-    </>
+    <PurchasesTable data={data}/>
   )
 }
 
