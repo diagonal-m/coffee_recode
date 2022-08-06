@@ -6,6 +6,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from '@material-ui/icons/Add';
 
 import { MonthlyPurchasesQuery } from 'generated/graphql'
 
@@ -34,6 +36,11 @@ const PurchasesTable: React.FC<PurchasesType> = ({data}) => {
           </TableRow>
         </TableHead>
         <TableBody>
+          <TableRow>
+            <IconButton>
+              <AddIcon fontSize="inherit" />
+            </IconButton>
+          </TableRow>
           {data.monthlyPurchases?.map((row: any) => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">

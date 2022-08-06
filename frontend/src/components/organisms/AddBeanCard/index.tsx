@@ -3,8 +3,8 @@ import IconButton from "@material-ui/core/IconButton";
 import AddIcon from '@material-ui/icons/Add';
 
 const cardStyle: React.CSSProperties = {
-  'width': '230px',
-  'height': '330px',
+  'width': '240px',
+  'height': '350px',
   'margin': '10px',
   'display': 'flex',
   'justifyContent': 'center',
