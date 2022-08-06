@@ -28,7 +28,7 @@ module Types
       argument :month, String, required: true
     end
     def monthly_purchases(month:)
-      current_user&.purchases.where(purchase_date: month.to_date.all_month)
+      current_user&.purchases.where(purchase_date: month.to_date.all_month).order(purchase_date: "DESC")
     end
   end
 end
