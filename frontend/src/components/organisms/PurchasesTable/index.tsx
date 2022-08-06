@@ -9,10 +9,9 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from "@material-ui/core/IconButton";
 import AddIcon from '@material-ui/icons/Add';
 
-import { MonthlyPurchasesQuery } from 'generated/graphql'
-
 type PurchasesType = {
-  data: MonthlyPurchasesQuery
+  purchases: any
+  onClick: () => void
 }
 
 const parseDate = (dateString: string) => {
@@ -21,7 +20,7 @@ const parseDate = (dateString: string) => {
   return (date.getFullYear() + '/' + String(month) + '/' + date.getDate())
 }
 
-const PurchasesTable: React.FC<PurchasesType> = ({data}) => {
+const PurchasesTable: React.FC<PurchasesType> = ({purchases, onClick}) => {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -37,11 +36,11 @@ const PurchasesTable: React.FC<PurchasesType> = ({data}) => {
         </TableHead>
         <TableBody>
           <TableRow>
-            <IconButton>
+            <IconButton onClick={onClick}>
               <AddIcon fontSize="inherit" />
             </IconButton>
           </TableRow>
-          {data.monthlyPurchases?.map((row: any) => (
+          {purchases?.map((row: any) => (
             <TableRow key={row.id}>
               <TableCell component="th" scope="row">
                 {parseDate(row.purchaseDate)}

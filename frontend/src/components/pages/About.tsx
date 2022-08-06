@@ -6,8 +6,10 @@ import CircularProgress from '@material-ui/core/CircularProgress'
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import IconButton from "@material-ui/core/IconButton";
+import Modal from "@material-ui/core/Modal"
 
 import PurchasesTable from "components/organisms/PurchasesTable";
+import AddPurchaseForm from "components/organisms/AddPurchasesForm"
 
 const parseDate = (date: any, plusMonth: number) => {
   const month = Number(date.getMonth()) + 1 + plusMonth
@@ -17,10 +19,18 @@ const parseDate = (date: any, plusMonth: number) => {
 // とりあえず認証済みユーザーの名前やメールアドレスを表示
 const About: React.FC = () => {
   const [purchases, setPurchases] = React.useState<any>([])
+  const [isModal, setIsModal] = React.useState<boolean>(false)
   const [plusMonth, setPlusMonth] = React.useState(0)
   const date = new Date()
   
   const [getMonthlyPurchases, {loading, data}] = useMonthlyPurchasesLazyQuery()
+
+  const addButtonClick = () => {
+    setIsModal(true)
+  }
+  const closeModal = () => {
+    setIsModal(false)
+  }
 
   React.useEffect((): any => {
     getMonthlyPurchases({
@@ -52,7 +62,13 @@ const About: React.FC = () => {
           <ArrowForwardIosIcon />
         </IconButton>
       </div>
-      <PurchasesTable data={data}/>
+      <PurchasesTable purchases={purchases} onClick={addButtonClick}/>
+      <Modal
+        open={isModal}
+        onClose={closeModal}
+      >
+        <AddPurchaseForm setIsModal={setIsModal} purchases={purchases} setPurchases={setPurchases}/>
+      </Modal>
     </>
   )
 }
