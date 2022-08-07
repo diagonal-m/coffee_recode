@@ -17,7 +17,7 @@ const parseDate = (date: any, plusMonth: number) => {
 }
 
 // とりあえず認証済みユーザーの名前やメールアドレスを表示
-const About: React.FC = () => {
+const Purchases: React.FC = () => {
   const [purchases, setPurchases] = React.useState<any>([])
   const [isModal, setIsModal] = React.useState<boolean>(false)
   const [plusMonth, setPlusMonth] = React.useState(0)
@@ -50,10 +50,12 @@ const About: React.FC = () => {
   if (!purchases) {
     <></>
   }
+  const totalPrice = purchases?.reduce((sum: number, element: any) => sum + element.price, 0)
+  console.log(totalPrice)
 
   return (
     <>
-      <div style={{'display': 'flex'}}>
+      <div style={{'display': 'flex', 'justifyContent': 'center'}}>
         <IconButton onClick={() => setPlusMonth(plusMonth - 1)}>
           <ArrowBackIosIcon />
         </IconButton>
@@ -61,6 +63,7 @@ const About: React.FC = () => {
         <IconButton onClick={() => setPlusMonth(plusMonth + 1)}>
           <ArrowForwardIosIcon />
         </IconButton>
+        <h2>{`${totalPrice?.toLocaleString()} yen`}</h2>
       </div>
       <PurchasesTable purchases={purchases} onClick={addButtonClick}/>
       <Modal
@@ -73,4 +76,4 @@ const About: React.FC = () => {
   )
 }
 
-export default About
+export default Purchases

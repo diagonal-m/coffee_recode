@@ -22,7 +22,7 @@ const parseDate = (dateString: string) => {
 
 const PurchasesTable: React.FC<PurchasesType> = ({purchases, onClick}) => {
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{'width': '100vh'}}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>

@@ -114,13 +114,13 @@ const Header: React.FC = () => {
             </ListItemIcon>
           </ListItem>
         </Link>
-        <Link to="/about">
-            <ListItem button>
-              <ListItemIcon>
-                <ListItemText primary="About" />
-              </ListItemIcon>
-            </ListItem>
-          </Link>
+        <Link to="/purchases">
+          <ListItem button>
+            <ListItemIcon>
+              <ListItemText primary="Purchases" />
+            </ListItemIcon>
+          </ListItem>
+        </Link>
       </List>
     </div>
   );
