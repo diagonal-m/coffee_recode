@@ -21,7 +21,8 @@ const Purchases: React.FC = () => {
   const [purchases, setPurchases] = React.useState<any>([])
   const [isModal, setIsModal] = React.useState<boolean>(false)
   const [plusMonth, setPlusMonth] = React.useState(0)
-  const date = new Date()
+  //const date = new Date()
+  const date = React.useMemo(() => new Date(), [])
   
   const [getMonthlyPurchases, {loading, data}] = useMonthlyPurchasesLazyQuery()
 
@@ -34,10 +35,10 @@ const Purchases: React.FC = () => {
 
   React.useEffect((): any => {
     getMonthlyPurchases({
-      variables: {month: parseDate(date, plusMonth) + '-' + '1'}
+      variables: {month: `${parseDate(date, plusMonth)}-1`}
     })
     setPurchases(data?.monthlyPurchases)
-  }, [data, plusMonth])
+  }, [data, plusMonth, date, getMonthlyPurchases])
 
   if (loading) {
     return (<CircularProgress />)
