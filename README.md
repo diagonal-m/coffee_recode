@@ -8,4 +8,6 @@ EL BOSQUE LOT NO.14
 ５投
 ３投目まで、93度
 ４投目から、65度
+
+WASHED
 ```
