@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import CommonLayout from "components/layouts/CommonLayout"
 import Home from "components/pages/Home"
-import About from "components/pages/About"
+import Purchases from "components/pages/Purchases"
 import SignUp from "components/pages/SignUp"
 import SignIn from "components/pages/SignIn"
 
@@ -107,7 +107,7 @@ const App: React.FC = () => {
               <Route exact path="/signin" component={SignIn} />
               <Private>
                 <Route exact path="/" component={Home} />
-                <Route exact path="/about" component={About} />
+                <Route exact path="/purchases" component={Purchases} />
               </Private>
             </Switch>
           </CommonLayout>

@@ -20,13 +20,13 @@ type CoffeeBeanCardType = {
 const cardStyle: React.CSSProperties = {
   'position': 'relative',
   'textAlign': 'center',
-  'width': '230px',
-  'height': '330px',
+  'width': '240px',
+  'height': '350px',
   'margin': '10px'
 }
 
 const cardTitleStyle: React.CSSProperties = {
-  'height': '50px',
+  'height': '65px',
   'paddingTop': '0',
   'paddingBottom': '0'
 }

@@ -1,0 +1,14 @@
+query monthlyPurchases($month: String!) {
+  monthlyPurchases(month: $month) {
+    id
+    purchaseDate
+    menu
+    coffeeType
+    volume
+    price
+    store {
+      name
+      station
+    }
+  }
+}

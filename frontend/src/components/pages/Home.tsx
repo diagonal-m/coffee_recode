@@ -28,7 +28,7 @@ const Home: React.FC = () => {
   React.useEffect((): any => {
     getMyBeans()
     setBeans(data?.myBeans)
-  }, [data]);
+  }, [data, getMyBeans]);
 
 
   if (loading) {

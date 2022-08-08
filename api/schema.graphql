@@ -98,7 +98,7 @@ type Mutation {
 }
 
 type Purchase {
-  coffeeType: Int
+  coffeeType: String
   createdAt: ISO8601DateTime!
   id: ID!
   menu: String
@@ -113,7 +113,7 @@ type Purchase {
 
 type Query {
   currentUser: User
-  monthryPurchases(month: String!): [Purchase!]!
+  monthlyPurchases(month: String!): [Purchase!]!
   myBeans: [CoffeeBean!]!
 
   """
