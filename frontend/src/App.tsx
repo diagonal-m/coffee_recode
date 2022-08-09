@@ -108,6 +108,7 @@ const App: React.FC = () => {
               <Route exact path="/signin" component={SignIn} />
               <Private>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/beans" component={Home} />
                 <Route exact path="/beans/:id" component={Bean} />
                 <Route exact path="/purchases" component={Purchases} />
               </Private>
