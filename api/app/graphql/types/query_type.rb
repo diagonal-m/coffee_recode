@@ -24,6 +24,13 @@ module Types
       current_user&.coffee_beans&.order(created_at: "DESC")
     end
 
+    field :bean, Types::CoffeeBeanType, null: false do
+      argument :id, ID, required: true
+    end
+    def bean(id:)
+      current_user&.coffee_beans.find_by(id: id)
+    end
+
     field :monthly_purchases, [Types::PurchaseType], null: false do
       argument :month, String, required: true
     end
