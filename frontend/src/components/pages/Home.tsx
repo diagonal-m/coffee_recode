@@ -48,7 +48,7 @@ const Home: React.FC = () => {
       <Grid container style={{'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center'}}>
         <AddCoffeeBeanCard onClick={addButtonClick}/>
         {beans?.map((bean: any) => (
-          <Grid item >
+          <Grid item>
             <CoffeeBeanCard
               id={bean.id}
               name={bean.name}

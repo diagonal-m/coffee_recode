@@ -113,11 +113,17 @@ export type Purchase = {
 
 export type Query = {
   __typename?: 'Query';
+  bean: CoffeeBean;
   currentUser?: Maybe<User>;
   monthlyPurchases: Array<Purchase>;
   myBeans: Array<CoffeeBean>;
   /** An example field added by the generator */
   testField: Scalars['String'];
+};
+
+
+export type QueryBeanArgs = {
+  id: Scalars['ID'];
 };
 
 
@@ -157,6 +163,13 @@ export type User = {
   unconfirmedEmail?: Maybe<Scalars['String']>;
   updatedAt: Scalars['ISO8601DateTime'];
 };
+
+export type BeanQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type BeanQuery = { __typename?: 'Query', bean: { __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, country?: string | null, varietal?: string | null, roastLevel?: number | null, tasting?: string | null, evaluation?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null } };
 
 export type CreateCoffeeBeanMutationVariables = Exact<{
   name: Scalars['String'];
@@ -199,6 +212,52 @@ export type MyBeansQueryVariables = Exact<{ [key: string]: never; }>;
 export type MyBeansQuery = { __typename?: 'Query', myBeans: Array<{ __typename?: 'CoffeeBean', id: string, name: string, processing?: string | null, country?: string | null, varietal?: string | null, roastLevel?: number | null, tasting?: string | null, evaluation?: number | null, store?: { __typename?: 'Store', name: string, station: string } | null }> };
 
 
+export const BeanDocument = gql`
+    query bean($id: ID!) {
+  bean(id: $id) {
+    id
+    name
+    processing
+    country
+    varietal
+    roastLevel
+    tasting
+    evaluation
+    store {
+      name
+      station
+    }
+  }
+}
+    `;
+
+/**
+ * __useBeanQuery__
+ *
+ * To run a query within a React component, call `useBeanQuery` and pass it any options that fit your needs.
+ * When your component renders, `useBeanQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useBeanQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useBeanQuery(baseOptions: Apollo.QueryHookOptions<BeanQuery, BeanQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<BeanQuery, BeanQueryVariables>(BeanDocument, options);
+      }
+export function useBeanLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<BeanQuery, BeanQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<BeanQuery, BeanQueryVariables>(BeanDocument, options);
+        }
+export type BeanQueryHookResult = ReturnType<typeof useBeanQuery>;
+export type BeanLazyQueryHookResult = ReturnType<typeof useBeanLazyQuery>;
+export type BeanQueryResult = Apollo.QueryResult<BeanQuery, BeanQueryVariables>;
 export const CreateCoffeeBeanDocument = gql`
     mutation createCoffeeBean($name: String!, $processing: String!, $country: String!, $varietal: String!, $roast_level: Int!, $tasting: String!, $evaluation: Int!, $store: String!, $station: String!) {
   createCoffeeBean(

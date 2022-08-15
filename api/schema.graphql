@@ -112,6 +112,7 @@ type Purchase {
 }
 
 type Query {
+  bean(id: ID!): CoffeeBean!
   currentUser: User
   monthlyPurchases(month: String!): [Purchase!]!
   myBeans: [CoffeeBean!]!

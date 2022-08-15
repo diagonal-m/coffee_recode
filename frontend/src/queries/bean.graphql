@@ -1,0 +1,16 @@
+query bean($id: ID!) {
+  bean(id: $id) {
+    id
+    name
+    processing
+    country
+    varietal
+    roastLevel
+    tasting
+    evaluation
+    store {
+      name
+      station
+    }
+  }
+}

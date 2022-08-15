@@ -107,10 +107,10 @@ const Header: React.FC = () => {
   const sideList = (
     <div className='sidebar'>
       <List>
-        <Link to="/">
+        <Link to="/beans">
           <ListItem button>
             <ListItemIcon>
-              <ListItemText primary="Home" />
+              <ListItemText primary="Beans" />
             </ListItemIcon>
           </ListItem>
         </Link>
