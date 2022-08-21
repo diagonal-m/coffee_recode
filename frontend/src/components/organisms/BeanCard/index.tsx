@@ -101,31 +101,29 @@ const CoffeeBeanCard: React.FC<CoffeeBeanCardType> = (props) => {
 
   return (
     <>
-      <CardActionArea href={`/beans/${id}`}>
-        <Card id={id} style={cardStyle}>
-          <CardContent style={cardTitleStyle}>
-            <CardTitle>{name}</CardTitle>
-          </CardContent>
-          <hr style={{'width': '90%', 'marginTop': '0', 'color': 'white'}}/>
-          <CardContent style={cardProcessingStyle}>
-            <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>{processing}</p>
-          </CardContent>
-          <CardContent style={cardRoastLevelStyle}>
-            <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>COUNTRY: {country}</p>
-            <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>VARIETAL: {varietal}</p>
-            <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>ROAST LEVELS: {roast_level}</p>
-          </CardContent>
-          <CardContent style={cardTastingStyle}>
-            <p style={{'fontSize': '13px', 'marginTop': '5px', 'marginBottom': '0', 'fontFamily': 'times new roman'}}>TASITING NOTE</p>
-            <p style={{'fontSize': '13px', 'marginTop': '2px', 'marginBottom': '5px', 'fontFamily': 'times new roman'}}>{tasting}</p>
-          </CardContent>
-          <CardContent style={cardRatingStyle}>
-            <Rating value={evaluation} max={10} readOnly={true} style={{'fontSize': '17px'}}/>
-          </CardContent>
-          <PStyle>{station} Station</PStyle>
-          <p style={{'fontSize': '12px', 'fontFamily': 'times new roman', 'marginBottom': '10px', 'marginTop': '10px'}}>{store}</p>
-        </Card>
-      </CardActionArea>
+      <Card id={id} style={cardStyle}>
+        <CardContent style={cardTitleStyle}>
+          <CardTitle>{name}</CardTitle>
+        </CardContent>
+        <hr style={{'width': '90%', 'marginTop': '0', 'color': 'white'}}/>
+        <CardContent style={cardProcessingStyle}>
+          <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>{processing}</p>
+        </CardContent>
+        <CardContent style={cardRoastLevelStyle}>
+          <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>COUNTRY: {country}</p>
+          <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>VARIETAL: {varietal}</p>
+          <p style={{'fontSize': '13px', 'margin': '0', 'fontFamily': 'times new roman'}}>ROAST LEVELS: {roast_level}</p>
+        </CardContent>
+        <CardContent style={cardTastingStyle}>
+          <p style={{'fontSize': '13px', 'marginTop': '5px', 'marginBottom': '0', 'fontFamily': 'times new roman'}}>TASITING NOTE</p>
+          <p style={{'fontSize': '13px', 'marginTop': '2px', 'marginBottom': '5px', 'fontFamily': 'times new roman'}}>{tasting}</p>
+        </CardContent>
+        <CardContent style={cardRatingStyle}>
+          <Rating value={evaluation} max={10} readOnly={true} style={{'fontSize': '17px'}}/>
+        </CardContent>
+        <PStyle>{station} Station</PStyle>
+        <p style={{'fontSize': '12px', 'fontFamily': 'times new roman', 'marginBottom': '10px', 'marginTop': '10px'}}>{store}</p>
+      </Card>
     </>
   )
 }

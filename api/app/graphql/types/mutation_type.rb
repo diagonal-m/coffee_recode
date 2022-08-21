@@ -1,5 +1,6 @@
 module Types
   class MutationType < Types::BaseObject
+    field :update_coffee_bean, mutation: Mutations::UpdateCoffeeBean
     field :create_purchase, mutation: Mutations::CreatePurchase
     field :create_coffee_bean, mutation: Mutations::CreateCoffeeBean
     # TODO: remove me

@@ -1,0 +1,38 @@
+mutation updateCoffeeBean(
+  $id: ID!
+  $name: String!
+  $processing: String!
+  $country: String!
+  $varietal: String!
+  $roast_level: Int!
+  $tasting: String!
+  $evaluation: Int!
+) {
+  updateCoffeeBean(
+    input: {
+      id: $id
+      name: $name
+      processing: $processing
+      country: $country
+      varietal: $varietal
+      roastLevel: $roast_level
+      tasting: $tasting
+      evaluation: $evaluation
+    }
+  ) {
+    coffeeBean {
+      id
+      name
+      processing
+      country
+      varietal
+      roastLevel
+      tasting
+      evaluation
+      store {
+        name
+        station
+      }
+    }
+  }
+}
